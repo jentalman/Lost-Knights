@@ -10,7 +10,6 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Transform Parent;
     [SerializeField] private AudioSource yeah;
     [SerializeField] private Text scorelabel;
-
     [SerializeField] private Sprite[] images;
     
     private MemoryCard _firstReveal;
@@ -20,13 +19,10 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
-        
-        
-
-        Difficulty(30);
+        Difficulty(GameManager.Instance.difficulty);
         Shuffle(numbers);
 
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < GameManager.Instance.difficulty; i++)
         {
             MemoryCard card;
             if (i == 0)
