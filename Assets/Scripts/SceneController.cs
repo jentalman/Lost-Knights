@@ -10,6 +10,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Transform Parent;
     [SerializeField] private AudioSource yeah;
     [SerializeField] private Text scorelabel;
+    [SerializeField] private GameObject gameOver;
     [SerializeField] private Sprite[] images;
     
     private MemoryCard _firstReveal;
@@ -107,9 +108,16 @@ public class SceneController : MonoBehaviour
             if (_firstReveal.id == _secondReveal.id)
             {
                 _score++;
-                 scorelabel.text = "Score : " + _score;
-                Debug.Log("СОВПАДЕНИЕ! Текущий счет: " + _score);
-                yeah.Play();
+                if (_score < GameManager.Instance.difficulty / 2)
+                {   
+                    scorelabel.text = "Score : " + _score;
+                    Debug.Log("СОВПАДЕНИЕ! Текущий счет: " + _score);
+                    yeah.Play();
+                }
+                else
+                {
+                    Win();
+                }
             }
             else
             {
@@ -121,5 +129,9 @@ public class SceneController : MonoBehaviour
             _firstReveal = null;
             _secondReveal = null;
         
+    }
+    private void Win()
+    {
+        gameOver.SetActive(true);
     }
 }
