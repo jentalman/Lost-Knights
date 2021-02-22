@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
-
-    [SerializeField] private GameManager difficulty;
-
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -20,6 +17,6 @@ public class UIController : MonoBehaviour
 
     public void DifficultyButton(int difficulty)
     {
-        this.difficulty.difficulty = difficulty;
+        GameManager.Instance.difficulty = difficulty;
     }
 }
