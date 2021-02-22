@@ -10,19 +10,22 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private GameObject BackGround;
     [SerializeField] private Text VolumeText;
     [SerializeField] private AudioSource audioVolume;
+    [SerializeField] private AudioSource cardVolume;
+    [SerializeField] private AudioSource yeahVolume;
+    
 
     public bool VolumeToggle = true;
     public void MenuButton()
     {
         Time.timeScale = 0f;
         UIPanlel.SetActive(true);
-        //BackGround.SetActive(false);
+        
     }
     public void ContinueButton()
     {
         Time.timeScale = 1f;
         UIPanlel.SetActive(false);
-        //BackGround.SetActive(true);
+        
     }
     public void RestartButton()
     {
@@ -46,9 +49,16 @@ public class UI_Controller : MonoBehaviour
         }
     }
 
-    public void SliderVolume(float volume)
+    public void MusicVolume(float volume)
     {
         audioVolume.volume = volume;
+        
+    }
+
+    public void EffectsVolume(float volume)
+    {
+        cardVolume.volume = volume;
+        yeahVolume.volume = volume;
     }
 
     public void QuitButton()
